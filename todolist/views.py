@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import Todo
 
 # Create your views here.
 def home (req):
-    return render(req, 'index.html')
+    todos = Todo.objects.all()
+    return render(req, 'index.html',{
+        'todos':todos,
+    })
 
 def completed (req):
     return render(req, 'completed.html')
