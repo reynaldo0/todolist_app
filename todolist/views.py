@@ -4,12 +4,16 @@ from .models import Todo
 # Create your views here.
 def home (req):
     todos = Todo.objects.all()
+
     return render(req, 'index.html',{
         'todos': todos, 
     })
 
 def completed (req):
-    return render(req, 'completed.html')
+    completed_todos = Todo.objects.filter(completed=True)
+    return render(req, 'completed.html',{
+        'todos':completed,
+    })
 
 def remaining (req):
     return render(req, 'remaining.html')
