@@ -12,7 +12,7 @@ def home (req):
 def completed (req):
     completed_todos = Todo.objects.filter(completed=True)
     return render(req, 'completed.html',{
-        'todos':completed,
+        'todos':completed_todos,
     })
 
 def remaining (req):
