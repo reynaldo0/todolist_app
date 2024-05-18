@@ -5,7 +5,7 @@ from .models import Todo
 def home (req):
     todos = Todo.objects.all()
     return render(req, 'index.html',{
-        'todos':todos,
+        'todos': todos, 
     })
 
 def completed (req):
