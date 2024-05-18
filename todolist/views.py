@@ -11,12 +11,17 @@ def home (req):
 
 def completed (req):
     completed_todos = Todo.objects.filter(completed=True)
+
     return render(req, 'completed.html',{
         'todos':completed_todos,
     })
 
 def remaining (req):
-    return render(req, 'remaining.html')
+    remaining_todos = Todo.objects.filter(completed=False)
+
+    return render(req, 'remaining.html',{
+        'todos':remaining_todos,
+    })
 
 def add_task (req):
     return render(req, 'add_task.html')
