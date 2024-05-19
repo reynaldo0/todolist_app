@@ -48,5 +48,8 @@ def add_task (req):
 def delete_task (req):
     return render(req, 'delete.html')
 
-def task_detail (req):
-    return render(req, 'task_detail.html')
+def task_detail (req, todo_id):
+    todo = Todo.objects.get(id = todo_id)
+    return render(req, 'task_detail.html',{
+        "todo": todo,
+    })

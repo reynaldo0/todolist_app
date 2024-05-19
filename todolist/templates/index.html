@@ -14,7 +14,7 @@
     <div class="flex flex-row justify-between">
       <!-- Left: Title and Description -->
       <div>
-        <a href="./task_detail.html">
+        <a href="{% url 'task_detail' todo.id %}">
           <h1 class="text-green-500 font-semibold text-xl italic line-through">
             {{ todo.title }}
           </h1>
@@ -47,7 +47,7 @@
     <div class="flex flex-row justify-between">
       <!-- Left: Title and Description -->
       <div>
-        <a href="{% url 'task_detail' %}">
+        <a href="{% url 'task_detail' todo.id %}">
           <h1 class="text-green-500 font-semibold text-xl">
             {{ todo.title }}
           </h1>
