@@ -14,7 +14,7 @@
         <div class="flex flex-row justify-between">
           <!-- Left: Title and Description -->
           <div>
-            <a href="./task_detail.html">
+            <a href="{% url 'task_detail' todo.id %}">
               <h1 class="text-green-500 font-semibold text-xl">
                 {{ todo.title }}
               </h1>
@@ -24,7 +24,7 @@
             </p>
           </div>
           <!-- Right: Toggle complete mode -->
-          <a href="">
+          <a href="{% url 'toggle_complete' todo.id %}">
             <i class="bx bx-check-circle bx-sm text-blue-500"></i>
             <!-- <i class='bx bxs-check-circle'></i> -->
           </a>
@@ -36,7 +36,7 @@
           <h2 class="text-gray-500 font-bold">
             Due {{ todo.due_date }} <span class="font-medium text-gray-400">{{ todo.due_time }}</span>
           </h2>
-          <a href="./delete.html">
+          <a href="{% url 'delete' %}">
             <i class="bx bxs-trash bx-sm text-red-500"></i>
           </a>
         </div>

@@ -45,7 +45,7 @@ def add_task (req):
         return render(req, 'add_task.html')
     return render(req, 'add_task.html')
 
-def delete_task (req):
+def delete(req):
     return render(req, 'delete.html')
 
 def task_detail (req, todo_id):
@@ -53,3 +53,10 @@ def task_detail (req, todo_id):
     return render(req, 'task_detail.html',{
         "todo": todo,
     })
+
+def toggle_complete(req, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    if todo:
+        todo.completed = not todo.completed
+        todo.save()
+        return redirect('home')
