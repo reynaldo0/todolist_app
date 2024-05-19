@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 
 # Create your views here.
 def home (req):
-    todos = Todo.objects.all()
+    todos = Todo.objects.all().order_by('due_date')
 
     return render(req, 'index.html',{
         'todos': todos, 
@@ -24,6 +24,25 @@ def remaining (req):
     })
 
 def add_task (req):
+    if req.method == "POST":
+        title = req.POST.get('title') 
+        desc = req.POST.get('desc') 
+        due_date = req.POST.get('due_date') 
+        due_time = req.POST.get('due_time') 
+        completed = False
+
+        if title != "" and due_date != "" and due_time != "":
+            todo = Todo(
+                title = title,
+                desc = desc,
+                due_date = due_date,
+                due_time = due_time,
+                completed = completed
+            )
+            todo.save()
+            return redirect ('home')
+    else:
+        return render(req, 'add_task.html')
     return render(req, 'add_task.html')
 
 def delete_task (req):
